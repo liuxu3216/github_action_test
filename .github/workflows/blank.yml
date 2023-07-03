@@ -4,9 +4,13 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+       #新建一个名为checkout_actions的步骤
+      - name: checkout_actions
+        #使用checkout@v2这个action获取源码
+        uses: actions/checkout@v2 
+      - name: dependcy
+        uses: actions/python@v1
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+            python-version: 3.7
+            run: bash ./signIn.python
+        
